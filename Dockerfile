@@ -2,7 +2,7 @@ FROM alpine:3.6
 LABEL barnett, zengqg@goodrain.com
 
 ENV KONG_VERSION 0.12.3
-ENV KONG_SHA256 93a277a98276cc857198db66cb8257dc30009bcda2ae0a3322f6e20a6cf8d91a
+ENV KONG_SHA256 e7750f4987b7bff485387a0bc95eb51609f7abc5faea76c9598a16f1da023faa
 
 RUN apk add --no-cache --virtual .build-deps wget tar ca-certificates \
 	&& apk add --no-cache libgcc openssl pcre perl tzdata \
