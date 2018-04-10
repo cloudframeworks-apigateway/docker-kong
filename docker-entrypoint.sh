@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
 # Disabling nginx daemon mode
@@ -14,6 +14,7 @@ fi
 # Prepare database
 for (( i = 0; i < 20; i++))
 do 
+   echo "step $i exec kong migrations up"
    kong migrations up
    if [ $? -eq 0 ];then
       break

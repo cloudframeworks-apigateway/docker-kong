@@ -1,5 +1,5 @@
 FROM alpine:3.6
-LABEL maintainer Marco Palladino, marco@mashape.com
+LABEL barnett, zengqg@goodrain.com
 
 ENV KONG_VERSION 0.13.0
 ENV KONG_SHA256 93a277a98276cc857198db66cb8257dc30009bcda2ae0a3322f6e20a6cf8d91a
@@ -16,12 +16,17 @@ RUN apk add --no-cache --virtual .build-deps wget tar ca-certificates \
 	&& rm -rf /tmp/etc \
 	&& apk del .build-deps
 
+RUN apk add --no-cache bash curl net-tools
+
 COPY docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod 755 /docker-entrypoint.sh
+
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
 EXPOSE 8000 8443 8001
 
 ENV KONG_DATABASE=postgres
+
 ENV KONG_ADMIN_LISTEN=0.0.0.0:8001
 
 STOPSIGNAL SIGTERM
