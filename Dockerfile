@@ -29,6 +29,7 @@ ENV KONG_DATABASE=postgres
 
 ENV KONG_ADMIN_LISTEN=0.0.0.0:8001
 
-STOPSIGNAL SIGTERM
+STOPSIGNAL SIGTERM 
+STOPSIGNAL SIGINT
 
 CMD ["/usr/local/openresty/nginx/sbin/nginx", "-c", "/usr/local/kong/nginx.conf", "-p", "/usr/local/kong/"]

@@ -1,5 +1,10 @@
 #!/bin/bash
+trap "exist" INT TERM
 
+exist(){
+   echo "Capture exit signal.. exit.."
+   exit 0
+}
 # Disabling nginx daemon mode
 export KONG_NGINX_DAEMON="off"
 
@@ -19,7 +24,7 @@ do
    fi
    echo "step $i exec kong migrations up failure, retry..."
    if [ $i -eq 19 ];then
-      echo "waiting postgres db ready timeout. exist"
+      echo "waiting postgres db ready timeout. exit"
       exit 1
    fi
    sleep 2
